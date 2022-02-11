@@ -36,11 +36,26 @@ cellArray.forEach((element) => {
     container.classList.add("dragging");
   });
 
+  element.addEventListener("touchstart", () => {
+    element.style.backgroundColor = penColor;
+    container.classList.add("dragging");
+  });
+
   element.addEventListener("mouseup", () => {
     container.classList.remove("dragging");
   });
 
+  element.addEventListener("touchend", () => {
+    container.classList.remove("dragging");
+  });
+
   element.addEventListener("mouseover", () => {
+    if (container.classList.contains("dragging")) {
+      element.style.backgroundColor = penColor;
+    }
+  });
+
+  element.addEventListener("touchmove", () => {
     if (container.classList.contains("dragging")) {
       element.style.backgroundColor = penColor;
     }
