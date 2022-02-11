@@ -7,8 +7,38 @@
     <link rel="stylesheet" href="css/index.css" />
     <title>Sketch.io</title>
   </head>
-  <body draggable="false">
-    <div class="container" draggable="false"></div>
+  <body>
+    <h1>Sketch.io</h1>
+    <div class="main-panel">
+      <div class="left-panel">
+        <form>
+          <input
+            class="chooseColor"
+            type="color"
+            id="favcolor"
+            name="favcolor"
+            value="#000000"
+          />
+        </form>
+        <div class="btn colorMode">Color Mode</div>
+        <div class="btn rainbow">Rainbow</div>
+        <div class="btn eraser">Eraser</div>
+        <div class="btn clear">Clear</div>
+        <div class="slidecontainer">
+          <input
+            type="range"
+            min="1"
+            max="100"
+            value="50"
+            class="slider"
+            id="myRange"
+          />
+        </div>
+      </div>
+      <div class="container"></div>
+      <div class="right-panel"></div>
+    </div>
+
     <script src="js/index.js"></script>
   </body>
 </html>
