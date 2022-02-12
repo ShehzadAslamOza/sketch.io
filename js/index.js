@@ -5,6 +5,9 @@ let eraser = document.querySelector(".eraser");
 let color = document.getElementById("favcolor");
 let rainbow = document.querySelector(".rainbow");
 let colorMode = document.querySelector(".colorMode");
+let slider = document.querySelector(".slider");
+let dimensions = document.querySelector(".dimensions");
+let cellArray;
 let state = "C";
 let penColor = "#000000";
 
@@ -28,29 +31,48 @@ function createDisplay(size) {
     el.classList.add("cell-" + i);
     container.append(el);
   }
+
+  cellArray = document.querySelectorAll(".cell");
+  console.log(cellArray);
+  cellArray.forEach((element) => {
+    element.addEventListener("mousedown", () => {
+      element.style.backgroundColor = getColor(state);
+      container.classList.add("dragging");
+    });
+
+    element.addEventListener("mouseup", () => {
+      container.classList.remove("dragging");
+    });
+
+    element.addEventListener("mouseover", () => {
+      if (container.classList.contains("dragging")) {
+        element.style.backgroundColor = getColor(state);
+      }
+    });
+  });
 }
 
 createDisplay(16);
 
 // Adds event listeners to each pixel
-let cellArray = document.querySelectorAll(".cell");
-console.log(cellArray);
-cellArray.forEach((element) => {
-  element.addEventListener("mousedown", () => {
-    element.style.backgroundColor = getColor(state);
-    container.classList.add("dragging");
-  });
+// let cellArray = document.querySelectorAll(".cell");
+// console.log(cellArray);
+// cellArray.forEach((element) => {
+//   element.addEventListener("mousedown", () => {
+//     element.style.backgroundColor = getColor(state);
+//     container.classList.add("dragging");
+//   });
 
-  element.addEventListener("mouseup", () => {
-    container.classList.remove("dragging");
-  });
+//   element.addEventListener("mouseup", () => {
+//     container.classList.remove("dragging");
+//   });
 
-  element.addEventListener("mouseover", () => {
-    if (container.classList.contains("dragging")) {
-      element.style.backgroundColor = getColor(state);
-    }
-  });
-});
+//   element.addEventListener("mouseover", () => {
+//     if (container.classList.contains("dragging")) {
+//       element.style.backgroundColor = getColor(state);
+//     }
+//   });
+// });
 
 // Adding event listners to the buttons
 clear.addEventListener("click", () => {
@@ -86,6 +108,15 @@ colorMode.addEventListener("click", () => {
   rainbow.classList.remove("active");
   eraser.classList.remove("active");
   penColor = "black";
+});
+
+slider.addEventListener("change", () => {
+  let size = slider.value;
+  dimensions.textContent = size + "rows x " + size + " columns";
+  while (container.firstChild) {
+    container.removeChild(container.lastChild);
+  }
+  createDisplay(size);
 });
 
 function getColor(s) {
