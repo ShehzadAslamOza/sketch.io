@@ -3,13 +3,14 @@ body {
   font-family: "Pangolin";
   font-weight: bold;
 }
-
+/* heading */
 h1 {
   text-align: center;
   font-size: 8vh;
   color: #444444;
 }
 
+/* Canvas */
 .container {
   margin: auto;
   width: 35em;
@@ -20,6 +21,13 @@ h1 {
   background-color: white;
 }
 
+.main-panel {
+  display: grid;
+  grid-template-columns: 4fr 5fr 3fr;
+  height: 35em;
+}
+
+/*controls and buttons*/
 .left-panel {
   margin-top: 10%;
   display: flex;
@@ -39,12 +47,6 @@ h1 {
   margin-bottom: 5%;
   padding: 0;
   border: none;
-}
-
-.main-panel {
-  display: grid;
-  grid-template-columns: 4fr 5fr 3fr;
-  height: 35em;
 }
 
 .btn {
@@ -80,6 +82,7 @@ h1 {
   background-color: mediumspringgreen;
 }
 
+/*For Small Devices*/
 @media only screen and (max-width: 900px) {
   .container {
     margin: auto;
@@ -105,7 +108,3 @@ h1 {
     grid-row-start: 1;
   }
 }
-
-/* * {
-  border: 2px solid blue;
-} */

@@ -8,13 +8,12 @@ let colorMode = document.querySelector(".colorMode");
 let slider = document.querySelector(".slider");
 let dimensions = document.querySelector(".dimensions");
 let cellArray;
-let state = "C";
+let state = "C"; //State to keep track of color and rainbow modes
 let penColor = "#000000";
 
 // creates the n by n canvas for drawing
 function createDisplay(size) {
-  // calculates the size of the canvas dynamically
-  let percentage = 100 / size;
+  let percentage = 100 / size; // calculates the size of the canvas
   let s = "repeat(" + size + "," + percentage + "%)";
 
   container.setAttribute(
@@ -32,6 +31,7 @@ function createDisplay(size) {
     container.append(el);
   }
 
+  // Adds Events listners to each cell/pixel
   cellArray = document.querySelectorAll(".cell");
   console.log(cellArray);
   cellArray.forEach((element) => {
@@ -52,27 +52,8 @@ function createDisplay(size) {
   });
 }
 
+//initial Display
 createDisplay(16);
-
-// Adds event listeners to each pixel
-// let cellArray = document.querySelectorAll(".cell");
-// console.log(cellArray);
-// cellArray.forEach((element) => {
-//   element.addEventListener("mousedown", () => {
-//     element.style.backgroundColor = getColor(state);
-//     container.classList.add("dragging");
-//   });
-
-//   element.addEventListener("mouseup", () => {
-//     container.classList.remove("dragging");
-//   });
-
-//   element.addEventListener("mouseover", () => {
-//     if (container.classList.contains("dragging")) {
-//       element.style.backgroundColor = getColor(state);
-//     }
-//   });
-// });
 
 // Adding event listners to the buttons
 clear.addEventListener("click", () => {
@@ -92,7 +73,6 @@ eraser.addEventListener("click", () => {
 
 color.addEventListener("change", () => {
   penColor = color.value;
-  console.log(penColor);
 });
 
 rainbow.addEventListener("click", () => {
@@ -113,12 +93,16 @@ colorMode.addEventListener("click", () => {
 slider.addEventListener("change", () => {
   let size = slider.value;
   dimensions.textContent = size + "rows x " + size + " columns";
+
+  // removes all the cells from canvas
   while (container.firstChild) {
     container.removeChild(container.lastChild);
   }
+
   createDisplay(size);
 });
 
+// Random Color Generator
 function getColor(s) {
   if (s == "C") {
     return penColor;
