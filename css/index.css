@@ -1,19 +1,27 @@
+body {
+  background-color: honeydew;
+  font-family: "Pangolin";
+  font-weight: bold;
+}
+
 h1 {
   text-align: center;
   font-size: 8vh;
+  color: #444444;
 }
 
 .container {
   margin: auto;
   width: 35em;
   height: 30em;
-  border: 2px solid red;
+  border: 4px dashed grey;
   display: grid;
   user-select: none;
+  background-color: white;
 }
 
 .left-panel {
-  border: 2px solid purple;
+  margin-top: 10%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,10 +29,16 @@ h1 {
 
 .chooseColor {
   padding: 0%;
-  border: 0%;
-  width: 40px;
-  height: 40px;
+  border: none;
+  width: 60px;
+  height: 60px;
   background-color: black;
+}
+
+.colorForm {
+  margin-bottom: 5%;
+  padding: 0;
+  border: none;
 }
 
 .main-panel {
@@ -39,11 +53,11 @@ h1 {
   width: 20vh;
   text-align: center;
   border-radius: 5px;
+  margin-bottom: 5%;
 }
 
 .btn:hover {
-  color: white;
-  background-color: black;
+  scale: 1.05;
 }
 
 .active {
@@ -51,7 +65,22 @@ h1 {
   background-color: black;
 }
 
-@media only screen and (max-width: 800px) {
+.rainbow.active {
+  color: white;
+  background-color: mediumslateblue;
+}
+
+.colorMode.active {
+  color: white;
+  background-color: maroon;
+}
+
+.eraser.active {
+  color: white;
+  background-color: mediumspringgreen;
+}
+
+@media only screen and (max-width: 900px) {
   .container {
     margin: auto;
     width: 20em;
@@ -70,7 +99,6 @@ h1 {
 
   .left-panel {
     grid-row-start: 3;
-    border: 2px solid purple;
   }
 
   .right-panel {
